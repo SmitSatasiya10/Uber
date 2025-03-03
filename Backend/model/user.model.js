@@ -13,21 +13,21 @@ const userSchema = new mongoose.Schema({
             type: String,
             minlenght: [3, 'Last name be must at least 3 characters long'],
         },
-        email: {
-            type: String,
-            required: true,
-            unique: true,
-            minlenght: [5, 'Email must be at least 5 character long'],
-        },
-        password: {
-            type: String,
-            required: true,
-            select: false,
-        },
-        socketId: {
-            type: String,
-        },
-    }
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+        minlenght: [5, 'Email must be at least 5 character long'],
+    },
+    password: {
+        type: String,
+        required: true,
+        select: false,
+    },
+    socketId: {
+        type: String,
+    },
 })
 
 userSchema.methods.generateAuthToken = function () {
@@ -44,5 +44,4 @@ userSchema.statics.hashPassword = async function (password) {
 }
 
 const userModel = mongoose.model('user', userSchema);
-
 module.exports = userModel;
